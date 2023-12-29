@@ -1,0 +1,44 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/**
+ * Author:  fill
+ * Created: 19/08/2017
+ */
+
+CREATE TABLE produto(
+    codigo serial,
+    produto character varying,
+    lote int,
+    unidade character varying,
+    quantidademin int,
+
+    primary key(codigo)
+);
+
+
+CREATE TABLE entrada(
+    codigo serial,
+    nota character varying,
+    produto int,
+    quantidade int,
+    valor real,
+    dataentrada date,
+
+    primary key(codigo),
+    foreign key(produto) references produto(codigo)
+);
+
+
+CREATE TABLE saida(
+    codigo serial,
+    datasaida date,
+    produto int,
+    quantidade int,
+    valor real,
+
+    primary key(codigo),
+    foreign key(produto) references produto(codigo)
+);
